@@ -1,6 +1,22 @@
 from flask import Flask, request, render_template
 import torch
-#import pandas as pd
+import torch.nn as nn
+
+
+# Define the CarPriceModel class
+class CarPriceModel(nn.Module):
+    def __init__(self, input_size):
+        super(CarPriceModel, self).__init__()
+        self.fc1 = nn.Linear(input_size, 128)
+        self.fc2 = nn.Linear(128, 64)
+        self.fc3 = nn.Linear(64, 1)
+
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = torch.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
+
 
 # Load the trained model and scaler
 model = torch.load('saved/car_price_model.pth')
@@ -21,7 +37,7 @@ def predict_pytorch(model, scaler, input_data):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('templates/index.html')
 
 
 @app.route('/predict', methods=['POST'])
@@ -39,7 +55,7 @@ def predict():
         input_data = [year, levy, manufacturer, model_name, prod_year, mileage, cylinders, airbags]
         predicted_price = predict_pytorch(model, scaler, input_data)
 
-        return render_template('index.html', prediction=f'Predicted Price: ${predicted_price:.2f}')
+        return render_template('templates/index.html', prediction=f'Predicted Price: ${predicted_price:.2f}')
 
 
 if __name__ == "__main__":
