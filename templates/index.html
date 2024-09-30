@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+</head>
+<body>
+    <h1>Predict Used Car Price</h1>
+    <form action="/predict" method="POST">
+        <label for="year">Year:</label><br>
+        <input type="text" id="year" name="year"><br><br>
+
+        <label for="levy">Levy:</label><br>
+        <input type="text" id="levy" name="levy"><br><br>
+
+        <label for="manufacturer">Manufacturer:</label><br>
+        <input type="text" id="manufacturer" name="manufacturer"><br><br>
+
+        <label for="model">Model:</label><br>
+        <input type="text" id="model" name="model"><br><br>
+
+        <label for="prod_year">Production Year:</label><br>
+        <input type="text" id="prod_year" name="prod_year"><br><br>
+
+        <label for="mileage">Mileage:</label><br>
+        <input type="text" id="mileage" name="mileage"><br><br>
+
+        <label for="cylinders">Cylinders:</label><br>
+        <input type="text" id="cylinders" name="cylinders"><br><br>
+
+        <label for="airbags">Airbags:</label><br>
+        <input type="text" id="airbags" name="airbags"><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction %}
+        <h2>{{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
