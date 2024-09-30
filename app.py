@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template
 import torch
 import torch.nn as nn
+import os
+import jinja2
 
 
 # Define the CarPriceModel class
@@ -19,8 +21,11 @@ class CarPriceModel(nn.Module):
 
 
 # Load the trained model and scaler
-model = torch.load('saved/car_price_model.pth')
-scaler = torch.load('saved/scaler.pth')
+model = torch.load('saved/car_price_model.pth', weights_only=False)
+scaler = torch.load('saved/scaler.pth', weights_only=False)
+
+template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
 
 app = Flask(__name__)
 
@@ -37,7 +42,8 @@ def predict_pytorch(model, scaler, input_data):
 
 @app.route('/')
 def home():
-    return render_template('templates/index.html')
+    template = jinja_env.get_template('index.html')
+    return template.render()
 
 
 @app.route('/predict', methods=['POST'])
@@ -54,8 +60,8 @@ def predict():
 
         input_data = [year, levy, manufacturer, model_name, prod_year, mileage, cylinders, airbags]
         predicted_price = predict_pytorch(model, scaler, input_data)
-
-        return render_template('templates/index.html', prediction=f'Predicted Price: ${predicted_price:.2f}')
+        template = app.jinja_env.get_template('index.html')
+        return template.render(prediction=f'Predicted Price: ${predicted_price:.2f}')
 
 
 if __name__ == "__main__":
