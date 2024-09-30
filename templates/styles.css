@@ -1,0 +1,140 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(https://static.vecteezy.com/system/resources/previews/030/813/416/original/auto-parts-seamless-background-vector.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: randomPan 30s infinite linear;
+}
+
+/* Random panning animation */
+@keyframes randomPan {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Container for centering form */
+.container {
+    text-align: center;
+    margin-top: 0;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Neon effect for the title with a super dark outline */
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #f5c242;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    font-weight: 900;
+    animation: flicker 1.5s infinite alternate;
+    text-shadow:
+        0 0 5px #fff,      /* Small white inner glow */
+        0 0 10px #f5c242,  /* Neon yellow inner glow */
+        0 0 20px #f5c242,  /* Neon yellow middle glow */
+        0 0 30px #f5c242,  /* Neon yellow outer glow */
+        0 0 40px #e5a73e,  /* Outer darker yellow glow */
+        0 0 50px #000000,  /* Darker outer outline for contrast */
+        0 0 60px #000000,  /* Super dark outer outline */
+        0 0 70px #000000,  /* Deep black for a strong outline */
+        0 0 80px #000000;  /* Extra dark outline for boldness */
+}
+
+/* Flickering effect */
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow:
+            0 0 5px #fff,
+            0 0 10px #f5c242,
+            0 0 20px #f5c242,
+            0 0 30px #f5c242,
+            0 0 40px #e5a73e,
+            0 0 50px #000000,
+            0 0 60px #000000,
+            0 0 70px #000000,
+            0 0 80px #000000;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+/* Form styling */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 100%;
+    width: 100%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Add a hover effect to the form */
+form:hover {
+    transform: translateY(-5px);
+}
+
+/* Label styling */
+label {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Input field styling */
+input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Add focus effect to input fields */
+input[type="text"]:focus {
+    border-color: #f5c242;
+    box-shadow: 0 0 5px rgba(245, 194, 66, 0.8);
+}
+
+/* Submit button styling */
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #f5c242;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the submit button */
+input[type="submit"]:hover {
+    background-color: #e5a73e;
+}
+
+/* Prediction result styling */
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-top: 20px;
+}
