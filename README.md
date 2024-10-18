@@ -1,4 +1,4 @@
-![image](https://cdn.discordapp.com/attachments/931674944063029259/1293679452156465172/image.png?ex=67084060&is=6706eee0&hm=d1698c6af9512526fc14a07f0bd421d6e3dd54236e2190f09d029de2fa81c987&)
+![image](https://i.imgur.com/BW95ds4.png)
 
 # Used Car Price Prediction
 
